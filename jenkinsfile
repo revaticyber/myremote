@@ -1,0 +1,28 @@
+pipeline{
+agent any
+stages{
+ stage('checkout')
+  step{
+   echo 'checking out repo'
+   git 'https://github.com/revaticyber/myremote'
+ }
+}
+  stages("publish"){
+ steps{
+  publishHTML([
+   allowmissing:true,
+   alwaysLinkedtoLastBuild:false,
+   keepAll:false,
+   reportDir'.',
+   reportFiles: "Index.html"
+   reportName:"MY HTML PAGE"
+   ])
+   }
+  }
+ }
+}
+
+   
+   
+
+
